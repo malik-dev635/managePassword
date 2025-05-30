@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="passwordmanager.MainController"
+            prefWidth="800" prefHeight="600"
+            stylesheets="@style.css"
+            styleClass="root-dark">
+
+    <top>
+        <VBox spacing="6">
+            <HBox alignment="CENTER_LEFT" spacing="20" styleClass="dashboard-header" BorderPane.alignment="CENTER">
+                <Label text="Mes mots de passe" styleClass="app-title"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="searchField" promptText="Rechercher..." styleClass="input-field" maxWidth="220"/>
+                <Button text="Ajouter" fx:id="addButton" styleClass="main-button" onAction="#handleAdd"/>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT">
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="userInfoLabel" styleClass="subtitle" alignment="CENTER_RIGHT"/>
+            </HBox>
+        </VBox>
+    </top>
+
+    <center>
+        <TableView fx:id="passwordTable" styleClass="password-table" prefHeight="500">
+            <columns>
+                <TableColumn fx:id="siteColumn" text="Site" prefWidth="180"/>
+                <TableColumn fx:id="loginColumn" text="Identifiant" prefWidth="180"/>
+                <TableColumn fx:id="passwordColumn" text="Mot de passe" prefWidth="140"/>
+                <TableColumn fx:id="createdColumn" text="Ajouté le" prefWidth="120"/>
+                <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="140"/>
+            </columns>
+        </TableView>
+    </center>
+
+</BorderPane> 

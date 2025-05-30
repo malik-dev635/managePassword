@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="passwordmanager.LoginController"
+           prefWidth="500" prefHeight="600"
+           stylesheets="@style.css"
+           styleClass="root-dark">
+
+    <!-- Vue de connexion -->
+    <VBox fx:id="loginView" spacing="15" alignment="CENTER" styleClass="login-box">
+        <Label text="Bienvenue" styleClass="app-title"/>
+        <Label text="Connectez-vous à votre compte" styleClass="subtitle"/>
+        <TextField fx:id="loginUsername" promptText="Nom d'utilisateur" styleClass="input-field"/>
+        <PasswordField fx:id="loginPassword" promptText="Mot de passe" styleClass="input-field"/>
+        <Button text="Se connecter" onAction="#handleLogin" styleClass="main-button"/>
+        <Label fx:id="loginMessage" styleClass="message-label"/>
+        <HBox alignment="CENTER" spacing="5">
+            <Label text="Pas encore de compte ?" styleClass="subtitle"/>
+            <Hyperlink text="Créer un compte" onAction="#showRegisterView" styleClass="link-button"/>
+        </HBox>
+    </VBox>
+
+    <!-- Vue d'inscription -->
+    <VBox fx:id="registerView" spacing="15" alignment="CENTER" styleClass="login-box" visible="false">
+        <Label text="Nouveau compte" styleClass="app-title"/>
+        <Label text="Créez votre compte sécurisé" styleClass="subtitle"/>
+        <TextField fx:id="registerEmail" promptText="Email" styleClass="input-field"/>
+        <TextField fx:id="registerUsername" promptText="Nom d'utilisateur" styleClass="input-field"/>
+        <PasswordField fx:id="registerPassword" promptText="Mot de passe" styleClass="input-field"/>
+        <Button text="Créer le compte" onAction="#handleRegister" styleClass="main-button"/>
+        <Label fx:id="registerMessage" styleClass="message-label"/>
+        <HBox alignment="CENTER" spacing="5">
+            <Label text="Déjà un compte ?" styleClass="subtitle"/>
+            <Hyperlink text="Se connecter" onAction="#showLoginView" styleClass="link-button"/>
+        </HBox>
+    </VBox>
+</StackPane>
+

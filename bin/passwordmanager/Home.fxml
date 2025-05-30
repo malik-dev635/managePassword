@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="passwordmanager.HomeController"
+           prefWidth="800" prefHeight="600"
+           maxWidth="800" maxHeight="600"
+           minWidth="800" minHeight="600"
+           stylesheets="@style.css"
+           styleClass="root-dark">
+
+    <HBox spacing="0" styleClass="main-container">
+        <!-- Section gauche - Contenu principal -->
+        <VBox styleClass="content-section" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER_LEFT" spacing="40" styleClass="content-wrapper">
+                <ImageView fitWidth="80" fitHeight="80" preserveRatio="true">
+                    <image>
+                        <Image url="@logo.png"/>
+                    </image>
+                </ImageView>
+                
+                <VBox spacing="4">
+                    <Label text="pswdManager" styleClass="app-title"/>
+                    <Label text="Votre gestionnaire de mots de passe" styleClass="subtitle"/>
+                    
+                </VBox>
+
+                <VBox spacing="20" styleClass="features-list">
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <Label text="🔒" styleClass="feature-emoji"/>
+                        <Label text="Annuaire Sécurisé" styleClass="feature-text"/>
+                    </HBox>
+                    
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <Label text="🔄" styleClass="feature-emoji"/>
+                        <Label text="En tant réel" styleClass="feature-text"/>
+                    </HBox>
+                    
+                    <HBox spacing="15" alignment="CENTER_LEFT">
+                        <Label text="✨" styleClass="feature-emoji"/>
+                        <Label text="Interface intuitive" styleClass="feature-text"/>
+                    </HBox>
+                </VBox>
+
+                <Button fx:id="mainButton" text="Commencer maintenant" onAction="#handleEnter" styleClass="main-button"/>
+                
+                <Label text="© 2025 pswdManager. Par Malik" styleClass="footer"/>
+                
+            </VBox>
+        </VBox>
+
+        <!-- Section droite - Image principale -->
+        <VBox styleClass="image-section" HBox.hgrow="ALWAYS">
+            <ImageView fitWidth="400" fitHeight="600" preserveRatio="false">
+                <image>
+                    <Image url="@tech.jpg"/>
+                </image>
+            </ImageView>
+        </VBox>
+    </HBox>
+</StackPane>
+
