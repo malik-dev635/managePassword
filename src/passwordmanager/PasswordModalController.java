@@ -115,7 +115,7 @@ public class PasswordModalController {
     }
 
     public boolean validateAndGetResult() {
-        errorLabel.setText(""); // Clear previous error
+        errorLabel.setText("");
 
         String site = cleanInput(siteField.getText());
         String login = cleanInput(loginField.getText());

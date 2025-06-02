@@ -40,6 +40,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
+import javafx.animation.PauseTransition;
+import javafx.util.Duration;
 
 public class MainController {
 
@@ -54,11 +58,17 @@ public class MainController {
     @FXML private Label userInfoLabel;
     @FXML private Button addButton;
     @FXML private Button fullscreenButton;
+    @FXML private Hyperlink logoutButton;
+    @FXML private Label timerLabel;
 
     // Liste maître contenant toutes les entrées de mot de passe
     private ObservableList<PasswordEntry> masterData = FXCollections.observableArrayList();
     private FilteredList<PasswordEntry> filteredData;
     private boolean isFullscreen = false;
+
+    private PauseTransition inactivityTimer;
+    private static final int INACTIVITY_TIMEOUT = 5; // 5 minutes en secondes
+    private int remainingSeconds;
 
     @FXML
     public void initialize() {
@@ -87,6 +97,15 @@ public class MainController {
         searchField.textProperty().addListener((obs, oldVal, newVal) -> filterTable(newVal));
 
         setupFullscreenButton();
+
+        // Initialiser le timer d'inactivité
+        setupInactivityTimer();
+        
+        // Ajouter les listeners pour réinitialiser le timer
+        passwordTable.setOnMouseMoved(this::resetInactivityTimer);
+        passwordTable.setOnKeyPressed(this::resetInactivityTimer);
+        searchField.setOnKeyPressed(this::resetInactivityTimer);
+        searchField.setOnMouseMoved(this::resetInactivityTimer);
     }
 
     private void setupFullscreenButton() {
@@ -377,5 +396,75 @@ public class MainController {
 
             loadPasswordsFromDatabase();
         }
+    }
+
+    @FXML
+    private void handleLogout() {
+        try {
+            // Réinitialiser l'utilisateur courant
+            CurrentUser.clear();
+            
+            // Charger la vue de connexion
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) mainContainer.getScene().getWindow();
+            Scene scene = new Scene(root, 800, 600);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.setTitle("pswdManager - Connexion");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText("Erreur lors de la déconnexion");
+            alert.setContentText("Une erreur est survenue lors de la déconnexion.");
+            
+            // Ajouter le logo à l'alerte d'erreur
+            ImageView logo = new ImageView(new Image(getClass().getResourceAsStream("logo.png")));
+            logo.setFitWidth(48);
+            logo.setFitHeight(48);
+            alert.setGraphic(logo);
+            
+            alert.showAndWait();
+        }
+    }
+
+    private void setupInactivityTimer() {
+        remainingSeconds = INACTIVITY_TIMEOUT * 60;
+        updateTimerLabel();
+        
+        inactivityTimer = new PauseTransition(Duration.seconds(1));
+        inactivityTimer.setOnFinished(event -> {
+            remainingSeconds--;
+            updateTimerLabel();
+            
+            if (remainingSeconds <= 0) {
+                handleLogout();
+            } else {
+                inactivityTimer.play();
+            }
+        });
+        inactivityTimer.play();
+    }
+    
+    private void updateTimerLabel() {
+        int minutes = remainingSeconds / 60;
+        int seconds = remainingSeconds % 60;
+        timerLabel.setText(String.format("Déconnexion dans %02d:%02d", minutes, seconds));
+    }
+    
+    private void resetInactivityTimer() {
+        remainingSeconds = INACTIVITY_TIMEOUT * 60;
+        updateTimerLabel();
+        inactivityTimer.playFromStart();
+    }
+    
+    private void resetInactivityTimer(MouseEvent event) {
+        resetInactivityTimer();
+    }
+    
+    private void resetInactivityTimer(KeyEvent event) {
+        resetInactivityTimer();
     }
 }
