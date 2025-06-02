@@ -38,6 +38,8 @@ import javafx.stage.Screen;
 import javafx.stage.StageStyle;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class MainController {
 
@@ -237,6 +239,12 @@ public class MainController {
             dialog.initModality(Modality.APPLICATION_MODAL);
             dialog.initOwner(passwordTable.getScene().getWindow());
 
+            // Ajouter le logo à la modal
+            ImageView logo = new ImageView(new Image(getClass().getResourceAsStream("logo.png")));
+            logo.setFitWidth(48);
+            logo.setFitHeight(48);
+            dialog.setGraphic(logo);
+
             Optional<ButtonType> result = dialog.showAndWait();
 
             if (result.isPresent() && result.get().getButtonData() == ButtonData.OK_DONE) {
@@ -272,6 +280,13 @@ public class MainController {
             alert.setTitle("Erreur");
             alert.setHeaderText("Impossible d'ouvrir la fenêtre d'ajout.");
             alert.setContentText("Veuillez réessayer.");
+            
+            // Ajouter le logo à l'alerte d'erreur
+            ImageView logo = new ImageView(new Image(getClass().getResourceAsStream("logo.png")));
+            logo.setFitWidth(48);
+            logo.setFitHeight(48);
+            alert.setGraphic(logo);
+            
             alert.showAndWait();
         }
     }

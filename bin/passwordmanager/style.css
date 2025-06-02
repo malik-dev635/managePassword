@@ -436,3 +436,92 @@
   -fx-spacing: 10px;
   -fx-alignment: center-right;
 }
+
+/* Styles pour la barre de défilement de la modal */
+.scroll-pane {
+  -fx-background-color: transparent;
+}
+
+.scroll-pane > .viewport {
+  -fx-background-color: transparent;
+}
+
+.scroll-pane > .scroll-bar:vertical {
+  -fx-background-color: transparent;
+  -fx-pref-width: 12px;
+  -fx-padding: 0 2px;
+}
+
+.scroll-pane > .scroll-bar:vertical > .track {
+  -fx-background-color: rgba(26, 26, 46, 0.6);
+  -fx-background-radius: 6px;
+}
+
+.scroll-pane > .scroll-bar:vertical > .thumb {
+  -fx-background-color: #ff3c00;
+  -fx-background-radius: 6px;
+  -fx-background-insets: 2px;
+}
+
+.scroll-pane > .scroll-bar:vertical > .thumb:hover {
+  -fx-background-color: #ff6a00;
+  -fx-effect: dropshadow(gaussian, rgba(255, 60, 0, 0.3), 10, 0, 0, 2);
+}
+
+.scroll-pane > .scroll-bar:vertical > .increment-button,
+.scroll-pane > .scroll-bar:vertical > .decrement-button {
+  -fx-background-color: transparent;
+  -fx-padding: 0;
+}
+
+.scroll-pane > .scroll-bar:vertical > .increment-arrow,
+.scroll-pane > .scroll-bar:vertical > .decrement-arrow {
+  -fx-background-color: transparent;
+}
+
+/* Styles pour les dialogues et alertes */
+.dialog-pane {
+  -fx-background-color: linear-gradient(to bottom right, #0a1626, #1b3b5a);
+}
+
+.dialog-pane .header-panel {
+  -fx-background-color: transparent;
+  -fx-padding: 15px;
+}
+
+.dialog-pane .header-panel .label {
+  -fx-text-fill: #ff3c00;
+  -fx-font-size: 24px;
+  -fx-font-weight: 700;
+}
+
+.dialog-pane .content {
+  -fx-padding: 15px;
+}
+
+.dialog-pane .content .label {
+  -fx-text-fill: #e0e0e0;
+  -fx-font-size: 14px;
+}
+
+.dialog-pane .graphic-container {
+  -fx-padding: 10px;
+}
+
+.dialog-pane .graphic-container .image-view {
+  -fx-fit-width: 48px;
+  -fx-fit-height: 48px;
+}
+
+/* Styles spécifiques pour les alertes d'erreur */
+.dialog-pane:error .header-panel {
+  -fx-background-color: rgba(255, 60, 0, 0.1);
+}
+
+.dialog-pane:error .header-panel .label {
+  -fx-text-fill: #ff3c00;
+}
+
+.dialog-pane:error .content .label {
+  -fx-text-fill: #ff6b6b;
+}
