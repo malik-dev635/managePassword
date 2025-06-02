@@ -309,15 +309,130 @@
 
 .action-btn {
   -fx-background-color: transparent;
-  -fx-font-size: 16px;
+  -fx-font-size: 20px;
   -fx-cursor: hand;
-  -fx-padding: 2 6 2 6;
+  -fx-padding: 8px 12px;
   -fx-border-radius: 6px;
   -fx-border-color: transparent;
   -fx-text-fill: #00eaff;
+  -fx-min-width: 40px;
+  -fx-min-height: 40px;
   -fx-transition: all 0.2s;
 }
+
+.action-btn .label {
+  -fx-text-fill: inherit;
+  -fx-font-size: inherit;
+}
+
 .action-btn:hover {
   -fx-background-color: rgba(255, 60, 0, 0.12);
   -fx-text-fill: #ff3c00;
+  -fx-effect: dropshadow(gaussian, rgba(255, 60, 0, 0.3), 10, 0, 0, 2);
+}
+
+#fullscreenButton {
+  -fx-font-size: 24px;
+  -fx-padding: 4px 8px;
+  -fx-min-width: 36px;
+  -fx-min-height: 36px;
+}
+
+#fullscreenButton:hover {
+  -fx-background-color: rgba(255, 60, 0, 0.12);
+  -fx-text-fill: #ff3c00;
+  -fx-effect: dropshadow(gaussian, rgba(255, 60, 0, 0.3), 10, 0, 0, 2);
+}
+
+.password-options {
+  -fx-padding: 15px;
+  -fx-background-color: rgba(26, 26, 46, 0.6);
+  -fx-background-radius: 8px;
+  -fx-border-color: #ff3c00;
+  -fx-border-width: 1px;
+  -fx-border-radius: 8px;
+}
+
+.options-title {
+  -fx-font-size: 16px;
+  -fx-font-weight: 600;
+  -fx-text-fill: #ff3c00;
+  -fx-padding: 0 0 10px 0;
+}
+
+.password-options .check-box {
+  -fx-text-fill: #e0e0e0;
+  -fx-font-size: 14px;
+}
+
+.password-options .check-box .box {
+  -fx-background-color: rgba(22, 33, 62, 0.9);
+  -fx-border-color: #ff3c00;
+  -fx-border-width: 1.5px;
+  -fx-border-radius: 4px;
+}
+
+.password-options .check-box:selected .box {
+  -fx-background-color: #ff3c00;
+}
+
+.password-options .spinner {
+  -fx-background-color: rgba(22, 33, 62, 0.9);
+  -fx-border-color: #ff3c00;
+  -fx-border-width: 1.5px;
+  -fx-border-radius: 4px;
+}
+
+.password-options .spinner .increment-arrow-button,
+.password-options .spinner .decrement-arrow-button {
+  -fx-background-color: #ff3c00;
+}
+
+.password-options .spinner .increment-arrow-button .increment-arrow,
+.password-options .spinner .decrement-arrow-button .decrement-arrow {
+  -fx-background-color: white;
+}
+
+.password-options .spinner .text-field {
+  -fx-background-color: transparent;
+  -fx-text-fill: #e0e0e0;
+}
+
+/* Styles pour les boutons de la modal */
+.dialog-pane .button-bar .button {
+  -fx-background-color: transparent;
+  -fx-text-fill: #00eaff;
+  -fx-font-size: 14px;
+  -fx-font-weight: 600;
+  -fx-padding: 8px 20px;
+  -fx-cursor: hand;
+  -fx-border-color: #ff3c00;
+  -fx-border-width: 1.5px;
+  -fx-border-radius: 6px;
+  -fx-background-radius: 6px;
+  -fx-min-width: 100px;
+}
+
+.dialog-pane .button-bar .button:hover {
+  -fx-background-color: rgba(255, 60, 0, 0.12);
+  -fx-text-fill: #ff3c00;
+  -fx-effect: dropshadow(gaussian, rgba(255, 60, 0, 0.3), 10, 0, 0, 2);
+}
+
+.dialog-pane .button-bar .button:default {
+  -fx-background-color: linear-gradient(to right, #ff6a00, #ff3c00);
+  -fx-text-fill: white;
+  -fx-border-color: #ff3c00;
+  -fx-border-width: 2px;
+}
+
+.dialog-pane .button-bar .button:default:hover {
+  -fx-background-color: linear-gradient(to right, #ff3c00, #ff6a00);
+  -fx-effect: dropshadow(gaussian, rgba(255, 60, 0, 0.5), 15, 0, 0, 3);
+}
+
+.dialog-pane .button-bar {
+  -fx-padding: 15px;
+  -fx-spacing: 10px;
+  -fx-alignment: center-right;
 }

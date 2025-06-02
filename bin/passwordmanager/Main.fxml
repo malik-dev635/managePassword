@@ -8,6 +8,7 @@
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="passwordmanager.MainController"
+            fx:id="mainContainer"
             prefWidth="800" prefHeight="600"
             stylesheets="@style.css"
             styleClass="root-dark">
@@ -19,6 +20,7 @@
                 <Region HBox.hgrow="ALWAYS"/>
                 <TextField fx:id="searchField" promptText="Rechercher..." styleClass="input-field" maxWidth="220"/>
                 <Button text="Ajouter" fx:id="addButton" styleClass="main-button" onAction="#handleAdd"/>
+                <Button fx:id="fullscreenButton" styleClass="action-btn"/>
             </HBox>
             <HBox alignment="CENTER_RIGHT">
                 <Region HBox.hgrow="ALWAYS"/>

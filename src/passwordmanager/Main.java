@@ -14,7 +14,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
         Scene scene = new Scene(root, 800, 600);
-        stage.setTitle("pswdManager - Accueil");
+        stage.setTitle("pswd Manager - Accueil");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.getIcons().add(new Image(getClass().getResourceAsStream("logo.png")));
