@@ -44,3 +44,8 @@ Pour mettre en place ce projet sur votre machine locale, suivez ces étapes :
 ## Utilisation
 
 Après avoir configuré la base de données, vous pouvez exécuter l'application JavaFX. L'application se connectera à la base de données `password_manager` pour authentifier les utilisateurs et gérer les mots de passe.
+
+## Auteur
+
+- **Nom**: Malik
+- **Portfolio**: [malik-dev.tech](https://malik-dev.tech)
